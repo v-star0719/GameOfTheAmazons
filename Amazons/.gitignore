@@ -1,0 +1,8 @@
+*.ncb
+*.sdf
+*.ilk
+debug/*.ilk
+debug/*.pdb
+release/*.ilk
+release/*.pdb
+ipch/

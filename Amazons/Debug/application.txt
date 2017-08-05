@@ -1,0 +1,14 @@
+[window_x]
+18
+[window_y]
+49
+[window_width]
+724
+[window_height]
+507
+[NetworkName]
+23333
+[IpAdress]
+127.0.0.1
+[port]
+50001
