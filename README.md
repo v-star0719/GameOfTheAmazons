@@ -14,17 +14,19 @@
 
 ***
 
-##开始游戏
+## 开始游戏
+
 （1）默认是电脑和玩家对局，可通过菜单【游戏】-【游戏设置】修改  
 （2）点击工具栏左边的【开始按钮】或者点击鼠标右键开始  
 
-##网络对战
+## 网络对战
+
 （1）网络对战需要启动GameServer，在GameServer下目录下。运行程序后，设置好ip地址和端口，点击【启动按钮】启动服务器。  
 （2）游戏设置中设置一方为网络玩家，之后通过菜单【游戏】-【网络】打开网络对话框，设置好服务器地址和端口，连接到服务器。在玩家列表中选择玩家，邀请对局即可。  
 
 ***
 
-##其他
+## 其他
 在Rlease文件夹中也提供了一个具有一定棋力的游戏程序Amazons_intelligent.exe。只使用了极大极小搜索和简单评估函数。  
 
-![screenshot](https://github.com/qiminixi/Amazons/blob/master/Release/screenshot.png)
+![screenshot](https://github.com/qiminixi/Amazons/blob/master/Amazons/Release/screenshot.png)
