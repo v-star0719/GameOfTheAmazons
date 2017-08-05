@@ -1,12 +1,30 @@
-# Amazons
+# 亚马逊棋程序框架
 
-这是一个简单的亚马逊棋框架程序，实现了亚马逊棋的基本规则，以及走子、人机对战、网络对战功能。  
+这是一个亚马逊棋框架程序，当年在学校做亚马逊棋时，希望那些没有学习GUI编程的同学，也能够参与进来一起研究计算机博弈，所以从当时的系统中抽出了UI功能，留出电脑计算的接口。现在正式完善了这个框架，并且提供了网络对战功能，以方便调试程序。  
 
+程序使用的是随机走子，**不包含着法计算**，跟别说评估函数和搜索算法了，这些还是自己研究出来比较好。^_^  
 
+功能包括：  
+* 基本操作，开始、暂停、走子、放箭、计时等
+* 历史步骤查看，前进、后退
+* 存档功能，游戏中产生临时存档文件，便于查找崩溃信息
+* 支持人机，人人对局
+* 网络对局
+* 设置存储
 
+***
 
-I am sorry I can not upload the source code.  
-I am trying to make a simple version which just show the rules of game of amazons.  
+##开始游戏
+（1）默认是电脑和玩家对局，可通过菜单【游戏】-【游戏设置】修改  
+（2）点击工具栏左边的【开始按钮】或者点击鼠标右键开始  
 
-The exe file in release floder is an intelligent computer AI.  
+##网络对战
+（1）网络对战需要启动GameServer，在GameServer下目录下。运行程序后，设置好ip地址和端口，点击【启动按钮】启动服务器。  
+（2）游戏设置中设置一方为网络玩家，之后通过菜单【游戏】-【网络】打开网络对话框，设置好服务器地址和端口，连接到服务器。在玩家列表中选择玩家，邀请对局即可。  
+
+***
+
+##其他
+在Rlease文件夹中也提供了一个具有一定棋力的游戏程序Amazons_intelligent.exe。只使用了极大极小搜索和简单评估函数。  
+
 ![screenshot](https://github.com/qiminixi/Amazons/blob/master/Release/screenshot.png)
