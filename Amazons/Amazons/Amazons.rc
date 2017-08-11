@@ -85,27 +85,23 @@ IDB_SELECT              BITMAP                  "res\\select.bmp"
 
 IDR_MAINFRAME TOOLBAR 21, 17
 BEGIN
-    BUTTON      ID_FILE_OPEN
-    BUTTON      ID_FILE_SAVE
-    SEPARATOR
     BUTTON      ID_GAME_START
     BUTTON      ID_GAMESUSPEND
-    BUTTON      ID_BACK_TO_START
+    SEPARATOR
+    BUTTON      ID_BACKWARD_TO_START
     BUTTON      ID_FORWARD_TO_END
     BUTTON      ID_BACKWARD_TWO
     BUTTON      ID_FORWARD_TWO
     BUTTON      ID_BACKWARD_ONE
     BUTTON      ID_FORWARD_ONE
-    BUTTON      ID_PASS
-    BUTTON      ID_MARK_THE_LATEST_MOVE
-    BUTTON      ID_BUTTON32787
-    BUTTON      ID_SHOW_HISTORY_DLG
     SEPARATOR
-    BUTTON      ID_APP_ABOUT
-    BUTTON      ID_COPY_MOVES_TO_CLIPBOARD
-    BUTTON      ID_SUGGEST_A_MOVE
     BUTTON      ID_SETTINGS
+    BUTTON      ID_NETWORK
+    BUTTON      ID_NEW_GAME
+    BUTTON      ID_SUGGEST_A_MOVE
     BUTTON      ID_STOP_COMPUTING
+    BUTTON      ID_MARK
+    BUTTON      ID_SHOW_HISTORY_DLG
 END
 
 
@@ -127,21 +123,12 @@ BEGIN
     END
     POPUP "查看(&V)"
     BEGIN
-        MENUITEM "历史步骤",                        ID_SHOW_HISTORY_DLG
         MENUITEM "工具栏(&T)",                     ID_VIEW_TOOLBAR
         MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
     END
     POPUP "游戏"
     BEGIN
-        MENUITEM "后退一步",                        ID_UNDO
-        MENUITEM "前进一步",                        ID_REDO
-        MENUITEM SEPARATOR
-        MENUITEM SEPARATOR
-        MENUITEM "新游戏",                         ID_NEW_GAME
-        MENUITEM "游戏设置",                        ID_SETTINGS
-        MENUITEM "网络",                          ID_NETWORK
-        MENUITEM SEPARATOR
-        MENUITEM "退出(&X)",                      ID_APP_EXIT
+        MENUITEM "（空）",                         ID_32816, INACTIVE
     END
     POPUP "帮助(&H)"
     BEGIN
@@ -477,7 +464,7 @@ STRINGTABLE
 BEGIN
     ID_UNDO                 "后退两步\n后退两步"
     ID_REDO                 "前进两步\n前进两步"
-    ID_SETTINGS             "游戏相关设置\n设置"
+    ID_SETTINGS             "游戏戏置\n游戏设置"
     ID_HISTORY              "查看历史步骤\n历史步骤"
     ID_NEW_GAME             "开始新的游戏\n新游戏"
 END
@@ -498,14 +485,16 @@ END
 STRINGTABLE
 BEGIN
     ID_FORWARD_ONE          "前进一步\n前进一步"
-    ID_SHOW_HISTORY_DLG     "显示历史步骤\n历史步骤"
+    ID_SHOW_HISTORY_DLG     "显示历史步骤\n历史"
     ID_GAMESUSPEND          "暂停游戏\n暂停游戏"
-    ID_MARK_THE_LATEST_MOVE "标志最近的走法\n标志最近走法 "
+    ID_MARK					"开关标记功能\n标记"
     ID_COPY_MOVES_TO_CLIPBOARD "复制着法至剪切板\n复制着法至剪切板"
-    ID_SUGGEST_A_MOVE       "电脑荐子\n荐子"
+    ID_SUGGEST_A_MOVE       "电脑荐子\n电脑荐子"
     ID_BACK_TO_START        "退回到开始\n退回到开始"
     ID_FORWARD_TO_END       "前进到结束\n前进到结束"
-    ID_STOP_COMPUTING       "停止电脑计算\n停止电脑计算"
+    ID_STOP_COMPUTING       "停止电脑计算\n停止"
+    ID_NETWORK              "网络设置\n网络设置"
+    ID_NET                  "网络设置\n网络设置"
 END
 
 #endif    // Chinese (Simplified, PRC) resources

@@ -117,13 +117,7 @@
     <Image Include="res\AmazonsDoc.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\bitmap1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\Black.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\Com.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\icon.ico">

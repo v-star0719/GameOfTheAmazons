@@ -146,7 +146,12 @@ void CNetworkDlg::OnBnClickedConnect()
 
 void CNetworkDlg::OnBnClickedBtnDisconnect()
 {
-	TipMessage(_T("该功能暂未实现"));
+	if (AfxMessageBox(_T("确定要断开吗"), MB_OKCANCEL) == IDOK)
+	{
+		m_pNetworkPlayer->Disconnect();
+		UpdateConnectStatus();
+		AfxMessageBox(_T("已断开"));
+	}
 }
 
 void CNetworkDlg::OnLbnSelchange()

@@ -65,7 +65,7 @@
 #define ID_FORWARD_ONE                  32800
 #define ID_SHOW_HISTORY_DLG             32801
 #define ID_GAMESUSPEND                  32802
-#define ID_MARK_THE_LATEST_MOVE         32803
+#define ID_MARK         32803
 #define ID_COPY_MOVES_TO_CLIPBOARD      32804
 #define ID_SUGGEST_A_MOVE               32805
 #define ID_BACK_TO_START                32806
@@ -73,6 +73,9 @@
 #define ID_STOP_COMPUTING               32808
 #define ID_Menu                         32809
 #define ID_NETWORK                      32810
+#define ID_NET                          32815
+#define ID_32816                        32816
+#define ID_BACKWARD_TO_START            32817
 
 // Next default values for new objects
 // 
@@ -80,7 +83,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        142
-#define _APS_NEXT_COMMAND_VALUE         32811
+#define _APS_NEXT_COMMAND_VALUE         32818
 #define _APS_NEXT_CONTROL_VALUE         1031
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

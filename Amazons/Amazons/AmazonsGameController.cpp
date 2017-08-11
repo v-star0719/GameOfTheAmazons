@@ -294,9 +294,12 @@ void CAmazonsGameController::AddToHistory(SPosition posSelect, SPosition posMove
 	m_nCurHisttoryPtr++;
 }
 
-//cur是指向当前的下一步，前进从cur开始，一直前进到顶部（顶部是m_nHistoryPtr）
+//如果step = -1，则前进到顶部
 void CAmazonsGameController::Forward(int step)
 {
+	if (step < 0) step = 92;
+
+	//cur是指向当前的下一步，从cur开始，一直前进到顶部（顶部是m_nHistoryPtr）
 	while (step > 0 && m_nCurHisttoryPtr < m_nHistoryPtr)
 	{
 		SHistoryRecord record = m_histroy[m_nCurHisttoryPtr];
@@ -307,9 +310,12 @@ void CAmazonsGameController::Forward(int step)
 	}
 }
 
-//cur是指向当前的下一步，后退从cur-1开始，一直退到底部（底部cur=0说明是空的）
+//如果step = -1，则后退到底部
 void CAmazonsGameController::Backward(int step)
 {
+	if (step < 0) step = 92;
+
+	//cur是指向当前的下一步，从cur-1开始，一直退到底部（底部cur=0说明是空的）
 	while (step > 0 && m_nCurHisttoryPtr > 0)
 	{
 		SHistoryRecord record = m_histroy[m_nCurHisttoryPtr - 1];

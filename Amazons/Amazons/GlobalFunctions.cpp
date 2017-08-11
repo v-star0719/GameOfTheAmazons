@@ -18,6 +18,19 @@ CString GblGetDirectoryOfExecutableFile()
 	return str;
 }
 
+CString GblGetFileNameFromPathName(CString strPathName)
+{
+	int i = strPathName.ReverseFind(_T('\\'));
+	int j = strPathName.ReverseFind(_T('.'));
+	return strPathName.Mid(i + 1, j - i - 1);
+}
+
+CString GblGetFileNameWithExFromPathName(CString strPathName)
+{
+	int i = strPathName.ReverseFind(_T('\\'));
+	return strPathName.Mid(i + 1);
+}
+
 int GetIntegerFromBuffer(LPCTSTR buffer, int *pStart)
 {
 	int nData=0;

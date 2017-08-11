@@ -82,6 +82,6 @@ void CHistoryDlg::UpdateHistoryText(CAmazonsGameControllerInterface *pAmazons)
 
 void CHistoryDlg::OnClose()
 {
-	((CAmazonsView*)m_pView)->OnHistoryDlgClosed();
+	((CAmazonsView*)m_pView)->HistoryDlgClosed();
 	CDialog::OnClose();
 }

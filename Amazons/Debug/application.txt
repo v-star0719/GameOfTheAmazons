@@ -1,11 +1,11 @@
 [window_x]
-18
+602
 [window_y]
-49
+236
 [window_width]
-724
+821
 [window_height]
-507
+537
 [NetworkName]
 23333
 [IpAdress]

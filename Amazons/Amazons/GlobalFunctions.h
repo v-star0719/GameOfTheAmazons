@@ -1,6 +1,8 @@
 #pragma once
 
 CString GblGetDirectoryOfExecutableFile();
+CString GblGetFileNameFromPathName(CString strPathName);
+CString GblGetFileNameWithExFromPathName(CString strPathName);
 long GblGetIPLong(LPCTSTR szIP);//返回的long就是addr的格式
 CString GblGetIPString(long ip);//返回"127.0.0.1"这样的格式
 int GetIntegerFromBuffer(LPCTSTR buffer, int *pStart);

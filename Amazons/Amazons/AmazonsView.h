@@ -21,6 +21,7 @@ class CAmazonsView : public CView
 {
 protected: // create from serialization only
 	CAmazonsView();
+	~CAmazonsView();
 	DECLARE_DYNCREATE(CAmazonsView)
 
 // Attributes
@@ -37,9 +38,6 @@ public:
 	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
 	virtual void OnInitialUpdate();
 	protected:
-	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
-	virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
-	virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 	//}}AFX_VIRTUAL
 
 // Implementation
@@ -69,9 +67,8 @@ protected:
 	//游戏流程控制
 	int m_nGameState;
 	//走子控制与实现
-	bool m_bMarkLastAction;//Mark是否存在
-	bool m_bMarkTheAction;
-	bool m_bComputerThinking;//电脑是否在计算
+	bool m_bMarkMove;
+	bool m_bComputerThinking;//电脑是否在计算，从开始计算，一直到走子完成才算思考结束
 	bool m_bComputerMoving;
 	int m_nComputerMoveTimer;
 	int m_nCurState;//0未选择棋子，2已选择棋子，3选择棋子并走了一步，等待放箭
@@ -103,14 +100,16 @@ protected:
 	CWinThread *m_pThread;
 	/////////////////////////
 
-protected:
-	virtual ~CAmazonsView();
-	
+	CString m_strFilePathName;//存档文件路径名，只有在打开或保存文件后会变
+
+
+private:
 	void Select(SPosition posSelected);//选择棋子(只绘图)
 	void Move(SPosition posSelected, SPosition posMoveTo);//走子(绘图并更新棋盘)
 	void Shoot(SPosition posShootAt);//放箭(绘图并更新棋盘)
 	void MarkTheAction(SPosition posActBgn,SPosition posActEnd, bool isShoot);//标志某一着法
 	void HumanMoveFinished();
+	void ComputerMoveFinished();//电脑走完
 
 	void UpdateHistoryDlg();//更新历史步骤对话框
 	void ForwardOrBackwardHistoryEnd();//当执行后退、前进操作时，借此更新棋盘
@@ -119,16 +118,18 @@ protected:
 	void UpdateTimeCounter();
 	void UpdateComputerMove();//电脑着子和放箭都有一个时间间隔
 	void UpdateRightInfo();
+	void UpdateAppTitle();
 	TCHAR * GetPlayerName(int playerType);
 	TCHAR * GetPlayer1Color();
 	TCHAR * GetPlayer2Color();
-	
+	int GetCurPlayerType();
+
 	void StartAIComputing();//电脑走步
-	void ComputerMoveFinished();//电脑走完
-	bool IsGameOver();//游戏是否结束,结束的话将设置m_nGameState为OVER
+	void Suggest();
 	void OpponentTurn(bool isStartGame = false);//对方走之，在下棋的两方之间切换
 	bool IsOpponentNetplayer();
-	bool IsCurPlayerPiece(CAmazonsGameControllerInterface *pAmazonsAI, int piece);
+	bool IsCurPlayerPiece(int piece);
+	bool IsGameOver();//游戏是否结束,结束的话将设置m_nGameState为OVER
 
 	static UINT Thread_AICompute(LPVOID pParam);
 
@@ -138,7 +139,7 @@ protected:
 #endif
 
 private:
-	void OnCommandGameStartWrap(bool sendMsg);
+	void StartGame(bool sendMsgToNetPlayer);
 
 // Generated message map functions
 protected:
@@ -148,34 +149,42 @@ protected:
 	afx_msg void OnTimer(UINT nIDEvent);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnCmdFileOpen();
-	afx_msg void OnCmdSettings();
-	afx_msg void OnCmdNewGame();
-	afx_msg void OnCmdGameStart();
-	afx_msg void OnCmdPass();
-	afx_msg void OnCmdBackwardOne();
-	afx_msg void OnCmdBackwardTwo();
-	afx_msg void OnCmdForwardOne();
-	afx_msg void OnCmdForwardTwo();
-	afx_msg void OnCmdShowHistoryDlg();
-	afx_msg void OnCmdGameSuspend();
-	afx_msg void OnCmdMarkCurMove();
-	afx_msg void OnCmdCopyMovesToClipboard();
-	afx_msg void OnCmdSuggestAMove();
-	afx_msg void OnCmdStopComputing();
-	afx_msg void OnCmdNetwork();
-	afx_msg void OnCmdFileSave();
-	afx_msg void OnUpdateGameStart(CCmdUI* pCmdUI);
-	afx_msg void OnUpdatePass(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateBackwardOne(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateBackwardTwo(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateForwardOne(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateForwardTwo(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateShowHistoryDlg(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateGamesuspend(CCmdUI* pCmdUI);
-	afx_msg void OnUpdateSuggestAMove(CCmdUI* pCmdUI);
 	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnUpdateStopComputing(CCmdUI* pCmdUI);
+	afx_msg void OnCmdFileOpen();
+	afx_msg void OnCmdFileSave();
+	afx_msg void OnCmdFileSaveAs();
+
+	afx_msg void OnCmdNewGame();
+	afx_msg void OnCmdNewGameUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdGameStart();
+	afx_msg void OnCmdGameStartUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdGameSuspend();
+	afx_msg void OnCmdGamesuspendUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdBackwardOne();
+	afx_msg void OnCmdBackwardOneUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdBackwardTwo();
+	afx_msg void OnCmdBackwardTwoUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdBackwardToStart();
+	afx_msg void OnCmdBackwardToStartUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdForwardOne();
+	afx_msg void OnCmdForwardOneUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdForwardTwo();
+	afx_msg void OnCmdForwardTwoUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdForwardToEnd();
+	afx_msg void OnCmdForwardToEndUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdSettings();
+	afx_msg void OnCmdSettingsUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdShowHistoryDlg();
+	afx_msg void OnCmdShowHistoryDlgUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdMark();
+	afx_msg void OnCmdMarkUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdSuggest();
+	afx_msg void OnCmdSuggestUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdStopComputing();
+	afx_msg void OnCmdStopComputingUpdate(CCmdUI* pCmdUI);
+	afx_msg void OnCmdNetwork();
+	afx_msg void OnCmdNetworkUpdate(CCmdUI* pCmdUI);
+
 	//}}AFX_MSG
 	afx_msg LRESULT OnAIComputingFinished(WPARAM wParam,LPARAM lParam);
 	afx_msg LRESULT OnNetworkConnectedToServer(WPARAM wParam, LPARAM lParam);
@@ -186,8 +195,9 @@ protected:
 	afx_msg LRESULT OnNetworkLog(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnNetworkGameControl(WPARAM wParam, LPARAM lParam);//wparam是要进行的操作，见SNetMsgCsGameControl
 	DECLARE_MESSAGE_MAP()
+
 public:
-	void OnHistoryDlgClosed();
+	void HistoryDlgClosed();
 };
 
 #ifndef _DEBUG  // debug version in AmazonsView.cpp

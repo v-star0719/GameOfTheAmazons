@@ -154,8 +154,20 @@ void CGameServer::RemoveClient(CMyAsyncSocket *pS)
 {
 	for (int i = 0; i < clientArray.GetCount(); i++)
 	{
-		if (clientArray[i].m_pSocket == pS)
+		SClientInfo &info = clientArray[i];
+		if (info.m_pSocket == pS)
 		{
+			//如果处于对局中，则要取消
+			if (info.m_nOpponentId > 0)
+			{
+				SClientInfo *pOpponent = GetClientInfoById(info.m_nOpponentId);
+				if (pOpponent != NULL)
+				{
+					pOpponent->m_nOpponentId = -1;
+					SendNetMsgScCancelChallenge(pOpponent->m_pSocket);
+				}
+				info.m_nOpponentId = -1;
+			}
 			m_strLog.Format(_T("remove client\r\n"), clientArray[i].m_playerInfo.nId);
 			Log(m_strLog);
 			clientArray.RemoveAt(i);
@@ -419,6 +431,7 @@ void CGameServer::HandleNetMsgCsChallengeConfirm(SNetMsgCsChallengeConfirm &msg)
 	}
 
 	SendNetMsgScConnectConfirm(pInviterInfo->m_pSocket, msg.inviterId, msg.inviteeId, msg.answer);
+	m_pDlg->UpdateClientList();
 }
 
 void CGameServer::HandleNetMsgCsCancelChallenge(SNetMsgCsCancelChallenge &msg)

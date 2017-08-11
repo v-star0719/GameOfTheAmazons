@@ -20,7 +20,6 @@ protected: // create from serialization only
 
 // Attributes
 public:
-	CAmazonsGameControllerInterface *pAmazons;
 
 // Operations
 public:

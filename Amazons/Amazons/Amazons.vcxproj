@@ -177,9 +177,7 @@
   <ItemGroup>
     <Image Include="res\Amazons.ico" />
     <Image Include="res\AmazonsDoc.ico" />
-    <Image Include="res\bitmap1.bmp" />
     <Image Include="res\Black.bmp" />
-    <Image Include="res\Com.bmp" />
     <Image Include="res\icon.ico" />
     <Image Include="res\MyApp.ico" />
     <Image Include="res\PlySelected.bmp" />

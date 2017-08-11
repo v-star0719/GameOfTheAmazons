@@ -1,11 +1,11 @@
 [window_x]
-40
+276
 [window_y]
-40
+229
 [window_width]
-1003
+652
 [window_height]
-602
+511
 [NetworkName]
 NoName
 [IpAdress]

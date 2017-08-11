@@ -52,6 +52,7 @@ CMainFrame::CMainFrame()
 	m_nPort = 50001;
 	m_strIp = _T("127.0.0.1");
 	m_strNetWorkName = _T("NoName");
+	m_strDocName = _T("new game");
 }
 
 CMainFrame::~CMainFrame()
@@ -202,7 +203,7 @@ void CMainFrame::LoadAppInfoFromFile()
 void CMainFrame::UpdateApplicationTitle()
 {
 	CString title;
-	CString docName = m_strDocName.IsEmpty() ? _T("new game") : m_strDocName;
-	title.Format(_T("%s [%s] - %s"), AfxGetAppName(), m_strNetWorkName, docName);
+	title.Format(_T("%s [%s] - %s"), AfxGetAppName(), m_strNetWorkName, m_strDocName);
+	SetWindowText(title);
 	SetTitle(title);
 }

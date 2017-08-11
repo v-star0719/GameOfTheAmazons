@@ -35,24 +35,12 @@ CAmazonsDoc::CAmazonsDoc()
 
 CAmazonsDoc::~CAmazonsDoc()
 {
-	delete pAmazons;
 }
 
 BOOL CAmazonsDoc::OnNewDocument()
 {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-	
 	if (!CDocument::OnNewDocument())
 		return FALSE;
-	//amazon.InitHistory();
-	//AfxGetMainWnd()->PostMessage(WM_FILE_OPENED, 0, 0);
-
-	//AfxGetMainWnd()->PostMessage(WM_FILE_OPENED);
-	// TODO: add reinitialization code here
-	// (SDI documents will reuse this document)
-	
-	pAmazons = new CAmazonsGameController;
-	pAmazons->Init();
-
 	return TRUE;
 }
 
@@ -70,10 +58,6 @@ void CAmazonsDoc::Serialize(CArchive& ar)
 	else
 	{
 		// TODO: add loading code here
-		CMainFrame *pMainFrame = (CMainFrame*)AfxGetMainWnd();
-		pMainFrame->m_strDocName = ar.GetFile()->GetFileTitle();
-		pMainFrame->UpdateApplicationTitle();
-		//SetTitle(ar.GetFile()->GetFileTitle());
 	}
 }
 
