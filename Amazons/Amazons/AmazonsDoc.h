@@ -9,9 +9,6 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "AmazonsInterface.h"
-#include "AmazonsGameController.h"
-
 class CAmazonsDoc : public CDocument
 {
 protected: // create from serialization only

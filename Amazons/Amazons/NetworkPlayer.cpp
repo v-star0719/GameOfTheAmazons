@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "resource.h"
-#include "AmazonsInterface.h"
+#include "AmazonsGameController.h"
 #include "AmazonsView.h"
 #include "NetworkPlayer.h"
 

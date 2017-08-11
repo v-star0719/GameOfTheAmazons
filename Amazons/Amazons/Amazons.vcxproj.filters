@@ -82,9 +82,6 @@
     <ClInclude Include="GameSettingDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AmazonsInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AmazonsGameController.h">
       <Filter>Header Files</Filter>
     </ClInclude>

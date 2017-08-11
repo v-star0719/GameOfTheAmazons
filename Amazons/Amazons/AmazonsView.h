@@ -8,7 +8,6 @@
 #include "GameSettingDlg.h"
 #include "HistoryDlg.h"
 #include "AmazonsDoc.h"
-#include "AmazonsInterface.h"
 #include "NetworkPlayer.h"
 #include "NetworkDlg.h"
 

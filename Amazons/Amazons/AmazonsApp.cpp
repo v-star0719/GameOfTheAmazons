@@ -5,7 +5,6 @@
 #include "AmazonsApp.h"
 
 #include "MainFrm.h"
-#include "AmazonsInterface.h"
 #include "AmazonsDoc.h"
 #include "AmazonsView.h"
 

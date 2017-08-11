@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "AmazonsApp.h"
-#include "AmazonsInterface.h"
+#include "AmazonsGameController.h"
 #include "HistoryDlg.h"
 #include "AmazonsView.h"
 
@@ -50,7 +50,7 @@ BEGIN_MESSAGE_MAP(CHistoryDlg, CDialog)
 	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
-void CHistoryDlg::UpdateHistoryText(CAmazonsGameControllerInterface *pAmazons)
+void CHistoryDlg::UpdateHistoryText(CAmazonsGameController *pAmazons)
 {
 	SHistoryRecord history[92];
 	int nPtr = 0;

@@ -34,10 +34,10 @@ static char THIS_FILE[] = __FILE__;
 
 
 //游戏控制
-CAmazonsGameControllerInterface *g_pGameController = new CAmazonsGameController;
+CAmazonsGameController *g_pGameController = new CAmazonsGameController;
 
 //电脑AI
-CAmazonsAIInterface *g_pAI = new CAmazonsAI;
+CAmazonsAI *g_pAI = new CAmazonsAI;
 
 /////////////////////////
 //线程通信

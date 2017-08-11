@@ -7,6 +7,8 @@
 // HistoryDlg.h : header file
 //
 
+#include "AmazonsGameController.h"
+
 /////////////////////////////////////////////////////////////////////////////
 // CHistoryDlg dialog
 
@@ -42,7 +44,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	void UpdateHistoryText(CAmazonsGameControllerInterface *pAmazons);
+	void UpdateHistoryText(CAmazonsGameController *pAmazons);
 	afx_msg void OnClose();
 };
 

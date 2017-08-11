@@ -1,7 +1,7 @@
 #pragma once
 
 #include "NetMsg.h"
-#include "AmazonsInterface.h"
+#include "AmazonsGameController.h"
 
 #define MAX_MSG_COUNT 10
 

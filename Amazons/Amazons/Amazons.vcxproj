@@ -159,7 +159,6 @@
   <ItemGroup>
     <ClInclude Include="AmazonsApp.h" />
     <ClInclude Include="AmazonsGameController.h" />
-    <ClInclude Include="AmazonsInterface.h" />
     <ClInclude Include="AmazonsDoc.h" />
     <ClInclude Include="AmazonsAI.h" />
     <ClInclude Include="AmazonsView.h" />
